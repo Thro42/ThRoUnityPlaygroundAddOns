@@ -38,8 +38,6 @@ public class FollowPlayer : Physics2DObject
         if (movementType == Enums.MovementType.OnlyHorizontal)
             newTargetPos.y = transform.position.y;
 
-        msg = string.Format("newTargetPos {0}", newTargetPos);
-        //Debug.Log(msg);
         if (this.rigidbody2D == null)
         {
             this.rigidbody2D = GetComponent<Rigidbody2D>();
@@ -48,8 +46,6 @@ public class FollowPlayer : Physics2DObject
         Vector2 distance = transform.position - target.position;
         if (lookAtTarget && mySpriteRenderer != null && this.rigidbody2D != null)
         {
-            msg = string.Format("show to {0}", distance.x);
-//            Debug.Log(msg);
             if (distance.x < 0)
             {
                 // flip the sprite

@@ -18,10 +18,12 @@ public class SplashScreen : MonoBehaviour
     {
         if (_splashScreen == null)
             return;
+        // Destroy by Key
         if (Input.GetKey(keyToStart))
         {
             Destroy(_splashScreen);
         }
+        // Destroy after delay
         if (useAutoStart)
         {
             timer += Time.deltaTime;

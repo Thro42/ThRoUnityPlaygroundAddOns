@@ -37,3 +37,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/FreeParallax.meta
+Assets/Knight Files.meta
+Assets/Playground.meta

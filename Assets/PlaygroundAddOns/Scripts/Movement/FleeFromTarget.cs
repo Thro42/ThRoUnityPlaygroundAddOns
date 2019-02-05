@@ -49,13 +49,15 @@ public class FleeFromTarget : Physics2DObject
         {
             this.rigidbody2D = GetComponent<Rigidbody2D>();
         }        //Move towards the target
-
+        // calculate the distance to the player
         float dist2Target = Vector2.Distance(transform.position, target.position);
+        // is the distance smaler then devined
         if (dist2Target < fleeDistance)
         {
             Vector2 moveTo = transform.position;
             if (movementType == Enums.MovementType.AllDirections || movementType == Enums.MovementType.OnlyHorizontal)
             {
+                // calc the new targer Pos on X-axis
                 float sign = Mathf.Sign(transform.position.x - target.position.x);
                 float xDif = fleeDistance - Mathf.Abs(transform.position.x - target.position.x);
                 xDif = xDif * sign;
@@ -64,12 +66,18 @@ public class FleeFromTarget : Physics2DObject
             }
             if (movementType == Enums.MovementType.AllDirections || movementType == Enums.MovementType.OnlyVertical)
             {
-                moveTo.y = moveTo.y + (transform.position.y - target.position.y);
+                // calc the new targer Pos on Y-axis
+                float sign = Mathf.Sign(transform.position.y - target.position.y);
+                float yDif = fleeDistance - Mathf.Abs(transform.position.y - target.position.y);
+                yDif = yDif * sign;
+                moveTo.y = moveTo.y + yDif;
+                moveTo.y = Mathf.Round(moveTo.y * 10) / 10;
             }
             Vector2 newTargetPos = Vector2.Lerp(transform.position, moveTo, Time.fixedDeltaTime * speed);
             if (movementType == Enums.MovementType.OnlyHorizontal)
                 newTargetPos.y = transform.position.y;
             this.rigidbody2D.MovePosition(newTargetPos);
+            // flip the sprite in direction of moving
             speedTo = this.rigidbody2D.GetPointVelocity(newTargetPos);
             this.rigidbody2D.velocity = speedTo;
             if (speedTo.x > 0)
@@ -86,6 +94,7 @@ public class FleeFromTarget : Physics2DObject
         {
             this.rigidbody2D.velocity = Vector2.zero;
         }
+        // change the sprite when the Objekt ist moving
         if (_walkSprite != null) // did we have a Sprite
         {
             if (Mathf.Abs(speedTo.x) > 0.001 && mySpriteRenderer.sprite == _idleSprite)
