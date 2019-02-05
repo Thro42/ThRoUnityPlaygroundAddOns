@@ -4,6 +4,9 @@
 [Bb]uild/
 [Bb]uilds/
 Assets/AssetStoreTools*
+Assets/Playground/
+Assets/FreeParallax/
+Assets/Knight Files/
 
 # Visual Studio cache directory
 .vs/
