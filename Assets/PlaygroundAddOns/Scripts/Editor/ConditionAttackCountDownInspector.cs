@@ -26,7 +26,6 @@ public class ConditionAttackCountDownInspector : ConditionInspectorBase
             EditorGUILayout.PropertyField(serializedObject.FindProperty("enemy"));
         }
 
-
         EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("attackCount"));
         

@@ -20,9 +20,12 @@ public class ConditionAttackInspector : ConditionInspectorBase
         // Show a tag selector to then use for the public property filterTag
         GUILayout.Space(10);
         DrawTagsGroup();
-
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("player"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("enemy"));
+        bool filterByTag = serializedObject.FindProperty("filterByTag").boolValue;
+        if (!serializedObject.FindProperty("filterByTag").boolValue)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("player"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("enemy"));
+        }
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
         //discern the event type, and show the frequency if needed
@@ -38,13 +41,12 @@ public class ConditionAttackInspector : ConditionInspectorBase
 
         CheckIfTrigger(true);
 
-
         if (GUI.changed)
         {
+            serializedObject.FindProperty("filterByTag").boolValue = filterByTag;
             serializedObject.FindProperty("filterTag").stringValue = chosenTag;
             serializedObject.ApplyModifiedProperties();
         }
-
     }
 
 }

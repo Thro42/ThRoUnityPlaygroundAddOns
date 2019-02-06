@@ -21,15 +21,32 @@ If you assign in “Walk Sprite” a Sprite object, this will automatically will
 
 #### <img src="./Assets/PlaygroundAddOns/Gizmos/FollowTarget.png" width="75" height="75"> FollowPlayer
 This Script is copy of the FollowTarget script. This variant flip's the sprite in the direction in which the figure moves.
+**Requires:** Rigidbody2D
+<p align="center"><img src="./Doku/Assets/FollowPlayer.png" width="400"></p>
+The Look at target option allows you that the Image flips automatically in the direction of the Target.
+
 #### <img src="./Assets/PlaygroundAddOns/Gizmos/MoveWithArrows.png" width="75" height="75"> PlayerMove
 This script is a variant of the Move script, it reflects the sprite in the direction in which the player moves.
+**Requires:** Rigidbody2D
+<p align="center"><img src="./Doku/Assets/PlayerMove.png" width="400"></p>
+This script applies a constant force to the GameObject on two axes, while pressing either the Arrow keys or WASD. The Type of Control property assigns which control scheme to use. You can have two of these scripts in the scene and assign one to each player, to create multiplayer games played on the same keyboard. The Movement Type property allows to restrict the movement on only one axis. You can think of it as if it’s moving on a railing, but you can also combine it with other movement scripts to create more refined movement. For instance, you can create a platformer controller by using this script and forcing it to the horizontal axis, in conjunction with a Jump script. Orientation gives you control over whether the object should Flip to face the direction of travel.
+
 ### Gameplay Add-ons
 #### <img src="./Assets/PlaygroundAddOns/Gizmos/WarriorControl.png" width="75" height="75"> Warrior
 This script is for the control of a warrior. This can be moved, an attack button and a small animation to be controlled
+**Requires:** Rigidbody2D, Collider2D
+<p align="center"><img src="./Doku/Assets/Warrior.png" width="400"></p>
+Please assign this script to a Player object. Under “Player Sprites” you can assign tree different images. One for when the player is idle, one when the player is walking and one when the Attack key is pressed. The Type of Control property assigns which control scheme to use. Under “Movement” you define the speed of the Player and you can define in which direction the player can move.
+
 ## Condition Add-ons
 The Unity Playground Documentation writes: “`Conditions are very similar to If Statements in programming, meaning that they act as a gateway to other behaviours. If the condition is verified, then the attached Actions are executed`”. My Conditions are mainly used to respond to a player's attacks.
 #### <img src="./Assets/PlaygroundAddOns/Gizmos/ConditionAttack.png" width="75" height="75"> ConditionAttack
 This condition checks if the object is exposed to an attack. It is checked if there is a collision with the player and the attack button is pressed.
+<p align="center"><img src="./Doku/Assets/ConditionAttack.png" width="400"></p>
+You have two options to assign the enemy and the player. When you assign the script to an enemy and select the option “Filer by Tag”, you must select the Tag which is assign to the player. The sript will find automatically the player object. If you deselect the “Filer by Tag” option, you can assign the object manually.
+<p align="center"><img src="./Doku/Assets/ConditionAttack2.png" width="400"></p>
+With the Attack key you define witch key is used for Attacks. In addition to choosing which key with Key to Press, you can choose which type of key event to listen to with Event Type: Just Pressed (like GetKeyDown), Released (GetKeyUp) or Kept Pressed (GetKey). As with other continuous actions, Kept Pressed mode has a Frequency property.
+
 #### <img src="./Assets/PlaygroundAddOns/Gizmos/ConditionAttackCountDown.png" width="75" height="75"> ConditionAttackCountDown
 This condition checks if the object is exposed to an attack. It is checked if there is a collision with the player and the attack button is pressed. However, the condition was only when the attack was repeated several times.\
 **Requires:** Collider2D
@@ -41,11 +58,22 @@ With the field “Attack Count” you control, how many hit’s the assigned obj
 ### Action Add-ons
 #### <img src="./Assets/PlaygroundAddOns/Gizmos/AddCountAction.png" width="75" height="75"> AddScoreAction
 When this action is taken, the player gets the given points
+<p align="center"><img src="./Doku/Assets/AddScoreAction.png" width="400"></p>
+
 #### <img src="./Assets/PlaygroundAddOns/Gizmos/ExplosionAction.png" width="75" height="75"> ExplowAction
 When performing this action, plays a specified sequence of sprites to simulate an explosion.
+<p align="center"><img src="./Doku/Assets/ExplowAction.png" width="400"></p>
+You assign this script to the game object on witch you want to simulate the explosion. Then enter in field Size the count of the Images for the explosion. After that assign the images. With the “Delay Time” you define how long every image is shown. Sometime the explosion images has to resize. In that case you can enter a “Scale Factor”.
+
 ### User Interface Add-ons
 ### <img src="./Assets/PlaygroundAddOns/Gizmos/SplashScreen.png" width="75" height="75"> SplashScreen
 You can use this script show a Splash Screen at beginning of the game.
+For using this Script add some game objects under the Prefab UserInterface 
+<p align="center"><img src="./Doku/Assets/UserInterfaceTree.png" width="400"></p> 
+First create an empty Game Object. Give him name you want and assign the script to the node UserInterface.
+<p align="center"><img src="./Doku/Assets/SplashScreen.png" width="400"></p>  
+Assign the crated Game Object to the field “Splash Screen”. Define the Key for closing the splash screen. If you select the option “Use Auto Start” you have to define after witch time the splash screen will automatic closed.
+
 ## Example Script
 These scripts have been made especially for the example game but can also be used for own games. In future I plan to rebuild the and offer them as an Add-on.
 ### <img src="./Assets/PlaygroundAddOns/Gizmos/MoveBackgroundParallax.png" width="75" height="75"> MoveBackgroundParallax
