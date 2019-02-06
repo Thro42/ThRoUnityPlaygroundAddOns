@@ -424,8 +424,8 @@ MonoBehaviour:
   target: {fileID: 1126295030}
   speed: 0.8
   movementType: 1
-  lookAtTarget: 1
   fleeDistance: 8
+  lookAtMoving: 1
   _walkSprite: {fileID: 21300000, guid: 0888ec530373e094a840ce83ff659ec2, type: 3}
 --- !u!114 &708757331
 MonoBehaviour:
@@ -483,7 +483,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   happenOnlyOnce: 0
-  filterByTag: 1
+  filterByTag: 0
   filterTag: Player
   keyToPress: 32
   attackCount: 3

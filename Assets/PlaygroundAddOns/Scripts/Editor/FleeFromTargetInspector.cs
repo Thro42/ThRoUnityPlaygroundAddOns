@@ -11,8 +11,20 @@ public class FleeFromTargetInspector : InspectorBase
     {
         GUILayout.Space(10);
         EditorGUILayout.HelpBox(explanation, MessageType.Info);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("target"));
 
-        base.OnInspectorGUI();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("movementType"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("fleeDistance"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("lookAtMoving"), new GUIContent("Look at Moving"));
+
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("_walkSprite"));
+
+        //base.OnInspectorGUI();
+        if (GUI.changed)
+        {
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 
 }

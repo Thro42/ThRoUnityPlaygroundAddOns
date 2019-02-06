@@ -13,11 +13,11 @@ public class FleeFromTarget : Physics2DObject
     // Speed used to move towards the target
     public float speed = 1f;
     public Enums.MovementType movementType = Enums.MovementType.OnlyHorizontal;
+    // When the Target is closer the this, the Object start to flee
+    public float fleeDistance = 10;
 
     // Used to decide if the object will look to direction of moving
-    public bool lookAtTarget = false;
-
-    public float fleeDistance = 10;
+    public bool lookAtMoving = false;
 
     [Header("Sprits")]
     public Sprite _walkSprite;
@@ -78,16 +78,19 @@ public class FleeFromTarget : Physics2DObject
                 newTargetPos.y = transform.position.y;
             this.rigidbody2D.MovePosition(newTargetPos);
             // flip the sprite in direction of moving
-            speedTo = this.rigidbody2D.GetPointVelocity(newTargetPos);
-            this.rigidbody2D.velocity = speedTo;
-            if (speedTo.x > 0)
+            if (lookAtMoving)
             {
-                // flip the sprite
-                mySpriteRenderer.flipX = true;
-            }
-            else
-            {
-                mySpriteRenderer.flipX = false;
+                speedTo = this.rigidbody2D.GetPointVelocity(newTargetPos);
+                this.rigidbody2D.velocity = speedTo;
+                if (speedTo.x > 0)
+                {
+                    // flip the sprite
+                    mySpriteRenderer.flipX = true;
+                }
+                else
+                {
+                    mySpriteRenderer.flipX = false;
+                }
             }
         }
         else
